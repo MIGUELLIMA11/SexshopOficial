@@ -1,0 +1,449 @@
+﻿/* =========================================================
+   CHAMA VIVA â€” Sexshop para 60+
+   Primeira dobra para apresentacao de UX na faculdade
+
+   FONT   : Playfair Display (titulos) + Inter (corpo)
+            â€” elegante, legivel, alto contraste
+   COLORS : Terracota quente + creme + verde-musgo
+            â€” acolhedor, maduro, sem cliche glamour
+   SIZE   : Base 18 px â€” conforto de leitura 60+
+   A11Y   : contraste WCAG AA, skip-link, foco visivel,
+            landmarks semanticos, aria-labels
+   TONE   : Humano, um toque de humor respeitoso,
+            sem sensacionalismo
+========================================================= */
+
+/* ---- TOKENS ---- */
+:root {
+  /* Paleta */
+  --terra:      #b55a3a;
+  --terra-d:    #924a2e;
+  --terra-pale: #f5ddd5;
+  --musgo:      #4a6741;
+  --musgo-d:    #3a5232;
+  --musgo-pale: #d6e8d2;
+  --creme:      #fdf7f2;
+  --creme-alt:  #f4ede4;
+  --branco:     #ffffff;
+  --tinta:      #261a14;
+  --tinta-mid:  #5a3e30;
+  --tinta-soft: #8a6a58;
+  --borda:      rgba(38, 26, 20, 0.1);
+
+  /* Sombras */
+  --s-sm: 0 2px 10px rgba(38,26,20,.09);
+  --s-md: 0 8px 30px rgba(38,26,20,.14);
+  --s-lg: 0 20px 60px rgba(38,26,20,.2);
+
+  /* Bordas arredondadas */
+  --r-xs:   8px;
+  --r-sm:   12px;
+  --r-md:   20px;
+  --r-lg:   28px;
+  --r-xl:   40px;
+  --r-pill: 999px;
+
+  /* Fontes */
+  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans:  'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* =========================================================
+   BASE
+========================================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 18px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  line-height: 1.7;
+  color: var(--tinta);
+  background-color: var(--creme);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+ul, ol { list-style: none; }
+
+/* =========================================================
+   ACESSIBILIDADE
+========================================================= */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 16px;
+  z-index: 9999;
+  padding: 12px 20px;
+  border-radius: var(--r-sm);
+  background: var(--tinta);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: top 200ms;
+}
+.skip-link:focus { top: 16px; }
+
+*:focus-visible {
+  outline: 3px solid var(--terra);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 40px;
+  height: 70px;
+  background: rgba(253, 247, 242, 0.93);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.brand {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--terra);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.nav-list { display: flex; gap: 4px; flex: 1; }
+.nav-list a {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: var(--r-pill);
+  font-size: .95rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--tinta-mid);
+  transition: background 150ms, color 150ms;
+}
+.nav-list a:hover { background: var(--creme-alt); color: var(--tinta); }
+
+/* =========================================================
+   BOTOES
+========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: var(--r-pill);
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 180ms, box-shadow 180ms, background 180ms, color 180ms, border-color 180ms;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  color: #fff;
+  background: var(--terra);
+  box-shadow: 0 8px 24px rgba(181, 90, 58, .38);
+}
+.btn-primary:hover { background: var(--terra-d); box-shadow: 0 14px 32px rgba(181,90,58,.48); }
+
+.btn-ghost {
+  color: var(--terra);
+  background: transparent;
+  border-color: var(--terra);
+}
+.btn-ghost:hover { background: var(--terra); color: #fff; }
+
+.btn-nav {
+  color: var(--musgo);
+  background: transparent;
+  border-color: var(--musgo);
+  min-height: 40px;
+  font-size: .9rem;
+  padding: 0 20px;
+}
+.btn-nav:hover { background: var(--musgo); color: #fff; }
+
+.btn-destaque {
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
+  background: var(--terra);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(181, 90, 58, .32);
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-pill);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  transition: background 180ms, transform 180ms, box-shadow 180ms;
+}
+.btn-destaque:hover { background: var(--terra-d); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(181,90,58,.42); }
+
+/* =========================================================
+   HERO â€” PRIMEIRA DOBRA
+========================================================= */
+.hero {
+  max-width: 1240px;
+  margin: 0 auto;
+  min-height: calc(100vh - 70px);
+  padding: 72px 40px 88px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: var(--r-pill);
+  background: var(--musgo-pale);
+  color: var(--musgo-d);
+  font-size: .88rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.dot-vivo {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--musgo);
+  flex-shrink: 0;
+  animation: pulsar 2.2s infinite;
+}
+@keyframes pulsar {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: .45; transform: scale(.7); }
+}
+
+.hero-copy h1 {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--tinta);
+  margin-bottom: 24px;
+}
+.hero-copy h1 em { font-style: italic; font-weight: 400; color: var(--terra); }
+
+.hero-sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  color: var(--tinta-mid);
+  line-height: 1.75;
+  max-width: 56ch;
+  margin-bottom: 32px;
+}
+
+.diferenciais { display: flex; flex-direction: column; gap: 12px; margin-bottom: 36px; }
+.diferenciais li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 1rem;
+  color: var(--tinta-mid);
+  line-height: 1.5;
+}
+.dif-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
+.selos { display: flex; flex-wrap: wrap; gap: 16px; font-size: .875rem; color: var(--tinta-soft); font-weight: 600; }
+
+/* =========================================================
+   CARD PRODUTO DESTAQUE (coluna direita do hero)
+========================================================= */
+.destaque-card {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--r-xl);
+  padding: 36px 30px;
+  box-shadow: var(--s-lg);
+  text-align: center;
+  animation: entrar 680ms cubic-bezier(.22, 1, .36, 1) both;
+}
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.destaque-label {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: var(--r-pill);
+  background: var(--terra-pale);
+  color: var(--terra-d);
+  font-size: .8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  margin-bottom: 18px;
+}
+.produto-emoji { font-size: 4.5rem; line-height: 1; margin-bottom: 16px; }
+.produto-nome  { font-family: var(--serif); font-size: 1.65rem; font-weight: 700; color: var(--tinta); margin-bottom: 12px; line-height: 1.2; }
+.produto-desc  { color: var(--tinta-mid); font-size: .95rem; line-height: 1.65; margin-bottom: 20px; }
+.avaliacao     { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 4px; }
+.estrelas      { color: #e09000; font-size: 1.15rem; letter-spacing: 2px; }
+.aval-texto    { font-size: .875rem; color: var(--tinta-soft); font-weight: 600; }
+.destaque-garantia { margin-top: 12px; font-size: .8rem; color: var(--tinta-soft); }
+
+/* =========================================================
+   FAIXA DE CONFIANCA
+========================================================= */
+.faixa {
+  background: var(--tinta);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.faixa span { padding: 16px 28px; color: rgba(255,255,255,.88); font-size: .9rem; font-weight: 600; }
+.faixa-sep  { color: rgba(255,255,255,.25) !important; padding: 0 !important; font-size: 1.2rem !important; }
+
+/* =========================================================
+   SECOES
+========================================================= */
+.sec { max-width: 1240px; margin: 0 auto; padding: 96px 40px; }
+
+.sec-alt {
+  max-width: 100%;
+  background: var(--creme-alt);
+  padding: 96px 40px;
+}
+.sec-alt .sec-head,
+.sec-alt .passos { max-width: 1000px; margin-left: auto; margin-right: auto; }
+
+.sec-head { text-align: center; margin-bottom: 56px; }
+.label {
+  display: inline-block;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 12px;
+}
+.sec-head h2 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 700;
+  color: var(--tinta);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.sec-sub { color: var(--tinta-mid); font-size: 1.05rem; max-width: 60ch; margin: 0 auto; }
+
+/* cards colecoes */
+.cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--r-lg);
+  padding: 36px;
+  box-shadow: var(--s-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 220ms, box-shadow 220ms;
+}
+.card:hover { transform: translateY(-5px); box-shadow: var(--s-md); }
+.card-destaque { border-color: var(--terra-pale); background: #fff9f7; }
+.card-emoji { font-size: 2.4rem; line-height: 1; }
+.card h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; color: var(--tinta); }
+.card p  { color: var(--tinta-mid); font-size: .96rem; line-height: 1.65; flex: 1; }
+.link-seta { color: var(--terra); font-weight: 700; font-size: .9rem; text-decoration: none; align-self: flex-start; transition: color 140ms; }
+.link-seta:hover { color: var(--terra-d); text-decoration: underline; }
+
+/* passos / como funciona */
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+.passo  { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; }
+.passo-num {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--terra);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(181,90,58,.38);
+  flex-shrink: 0;
+}
+.passo h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; color: var(--tinta); margin-bottom: 6px; }
+.passo p  { color: var(--tinta-mid); font-size: .95rem; line-height: 1.6; }
+
+/* depoimento */
+.sec-quote { background: var(--terra); padding: 96px 40px; text-align: center; }
+.sec-quote blockquote { max-width: 820px; margin: 0 auto; }
+.sec-quote h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.4rem);
+  font-weight: 400;
+  font-style: italic;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+.sec-quote cite { color: rgba(255,255,255,.75); font-style: normal; font-size: 1rem; font-weight: 600; }
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.rodape { background: var(--tinta); padding: 52px 40px; text-align: center; }
+.rodape-marca   { font-family: var(--serif); font-size: 2rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+.rodape-frase   { color: rgba(255,255,255,.72); font-size: 1rem; line-height: 1.6; margin-bottom: 10px; }
+.rodape-info    { color: rgba(255,255,255,.4); font-size: .85rem; }
+
+/* =========================================================
+   RESPONSIVO
+========================================================= */
+@media (max-width: 1020px) {
+  .cards-row { grid-template-columns: 1fr 1fr; }
+  .nav-list  { display: none; }
+}
+
+@media (max-width: 820px) {
+  html { font-size: 17px; }
+  .topbar { padding: 0 20px; height: 62px; }
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 40px 20px 60px;
+    gap: 40px;
+  }
+  .destaque-card { order: -1; }
+  .cards-row, .passos { grid-template-columns: 1fr; }
+  .sec        { padding: 64px 20px; }
+  .sec-alt    { padding: 64px 20px; }
+  .sec-quote  { padding: 72px 20px; }
+  .faixa span { padding: 12px 16px; font-size: .85rem; }
+  .faixa-sep  { display: none; }
+}
+
+@media (max-width: 540px) {
+  html { font-size: 16px; }
+  .hero-ctas      { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; }
+  .btn-nav        { display: none; }
+  .selos          { flex-direction: column; gap: 6px; }
+  .rodape         { padding: 40px 20px; }
+}

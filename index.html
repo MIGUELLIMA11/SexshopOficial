@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-BR">
+<!-- =========================================================
+     CHAMA VIVA — Sexshop para o publico 60+
+     Atividade UX: Primeira dobra + justificativa de design
+
+     FONTE  : Playfair Display (titulos) + Inter (corpo)
+     CORES  : Quente/acolhedor, alto contraste, acessivel
+     PERSONA: Idoso que encara o assunto como tabu —
+              a pagina quebra esse tabu com humor e respeito.
+     ACESSO : Fonte grande (18 px base), contraste AA, foco
+              visivel, skip-link, landmarks semanticos.
+========================================================= -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chama Viva | Intimidade sem prazo de validade</title>
+    <meta
+      name="description"
+      content="Sexshop para quem tem 60+ e sabe o que quer. Produtos de bem-estar intimo com linguagem clara, entrega discreta e atendimento humanizado."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteudo principal</a>
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="topbar" role="banner">
+      <a class="brand" href="#" aria-label="Chama Viva — pagina inicial">Chama Viva 🔥</a>
+
+      <nav aria-label="Menu principal">
+        <ul class="nav-list">
+          <li><a href="#por-que">Por que nos</a></li>
+          <li><a href="#colecoes">Colecoes</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn-nav" href="#atendimento">
+        Falar com consultora
+      </a>
+    </header>
+
+    <!-- ===================== MAIN ===================== -->
+    <main id="conteudo">
+
+      <!-- ============ PRIMEIRA DOBRA (hero) ============ -->
+      <section class="hero" aria-labelledby="hero-titulo">
+
+        <!-- coluna esquerda: copy -->
+        <div class="hero-copy">
+
+          <div class="pill-badge">
+            <span class="dot-vivo" aria-hidden="true"></span>
+            Sexshop feito para quem tem 60+ e sabe o que quer
+          </div>
+
+          <h1 id="hero-titulo">
+            A aposentadoria<br>
+            foi so o <em>comeco.</em>
+          </h1>
+
+          <p class="hero-sub">
+            Intimidade nao tem data de validade — mas alguns sites parecem achar que sim.
+            A Chama Viva existe pra provar o contrario: com letras grandes, linguagem sem
+            enrolacao e uma consultora de verdade do outro lado.
+            <strong>Sem tabus. Sem julgamento. Sem letra miuda.</strong>
+          </p>
+
+          <ul class="diferenciais" aria-label="Nossos diferenciais">
+            <li>
+              <span class="dif-icon" aria-hidden="true">📦</span>
+              <span>Entrega discreta — a vizinha vai continuar sem saber</span>
+            </li>
+            <li>
+              <span class="dif-icon" aria-hidden="true">💬</span>
+              <span>Consultoria por WhatsApp com pessoa real, sem chatbot</span>
+            </li>
+            <li>
+              <span class="dif-icon" aria-hidden="true">🔤</span>
+              <span>Fonte grande, botoes grandes, navegacao simples</span>
+            </li>
+          </ul>
+
+          <div class="hero-ctas" id="atendimento">
+            <a class="btn btn-primary" href="#colecoes">Explorar colecoes</a>
+            <a class="btn btn-ghost" href="#como-funciona">Como funciona</a>
+          </div>
+
+          <p class="selos">
+            <span>🔒 Compra sigilosa</span>
+            <span>↩️ Troca em 7 dias</span>
+            <span>💳 Ate 6x sem juros</span>
+          </p>
+        </div>
+
+        <!-- coluna direita: card produto destaque -->
+        <aside class="destaque-card" aria-label="Produto em destaque">
+          <p class="destaque-label">⭐ Escolha da semana</p>
+
+          <div class="produto-emoji" aria-hidden="true">🌹</div>
+
+          <h2 class="produto-nome">Kit Primeiros Passos 60+</h2>
+          <p class="produto-desc">
+            Gel hipoalergenico + item ergonomico + guia ilustrado com letra grande.
+            Selecionados por especialistas para conforto e facilidade de uso.
+          </p>
+
+          <div class="avaliacao" role="img" aria-label="4.9 de 5 estrelas — 247 avaliacoes de clientes 60+">
+            <span class="estrelas" aria-hidden="true">★★★★★</span>
+            <span class="aval-texto">4.9 &nbsp;·&nbsp; 247 avaliacoes de clientes 60+</span>
+          </div>
+
+          <a class="btn btn-destaque" href="#">Quero esse kit</a>
+
+          <p class="destaque-garantia">Embalagem neutra · sem nome da loja na caixa</p>
+        </aside>
+      </section>
+
+      <!-- ============ FAIXA DE CONFIANCA ============ -->
+      <div class="faixa" role="list" aria-label="Garantias">
+        <span role="listitem">📦 Embalagem neutra</span>
+        <span class="faixa-sep" aria-hidden="true">·</span>
+        <span role="listitem">💬 Consultora humana</span>
+        <span class="faixa-sep" aria-hidden="true">·</span>
+        <span role="listitem">🔒 Compra sigilosa</span>
+        <span class="faixa-sep" aria-hidden="true">·</span>
+        <span role="listitem">↩️ Troca em 7 dias</span>
+        <span class="faixa-sep" aria-hidden="true">·</span>
+        <span role="listitem">💳 6x sem juros</span>
+      </div>
+
+      <!-- ============ POR QUE NOS ============ -->
+      <section class="sec" id="por-que" aria-labelledby="pq-titulo">
+        <header class="sec-head">
+          <p class="label">O que nos diferencia</p>
+          <h2 id="pq-titulo">Feito para quem sabe o que quer</h2>
+          <p class="sec-sub">
+            60 anos de vida dao muita sabedoria. Mas ainda da pra aprender coisa nova —
+            principalmente a como se cuidar melhor.
+          </p>
+        </header>
+
+        <div class="cards-row">
+          <article class="card">
+            <span class="card-emoji" aria-hidden="true">🌿</span>
+            <h3>Conforto Diario</h3>
+            <p>Produtos suaves, hipoalergenicos e com instrucoes claras. Pra comecar sem complicacao — e continuar com prazer.</p>
+            <a href="#" class="link-seta">Explorar →</a>
+          </article>
+
+          <article class="card card-destaque">
+            <span class="card-emoji" aria-hidden="true">❤️‍🔥</span>
+            <h3>Conexao a Dois</h3>
+            <p>Pra casais que querem reavivar a chama — ou descobrir uma nova. Sim, mesmo depois dos 60. Especialmente depois dos 60.</p>
+            <a href="#" class="link-seta">Ver opcoes →</a>
+          </article>
+
+          <article class="card">
+            <span class="card-emoji" aria-hidden="true">✨</span>
+            <h3>Autocuidado</h3>
+            <p>Porque voce passou a vida cuidando de todo mundo. Ta na hora de cuidar de voce. Sem culpa. Sem explicacao.</p>
+            <a href="#" class="link-seta">Conhecer →</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ COMO FUNCIONA ============ -->
+      <section class="sec sec-alt" id="como-funciona" aria-labelledby="cf-titulo">
+        <header class="sec-head">
+          <p class="label">Simples do inicio ao fim</p>
+          <h2 id="cf-titulo">Tres passos. Sem mistério.</h2>
+        </header>
+
+        <ol class="passos" aria-label="Como comprar">
+          <li class="passo">
+            <span class="passo-num" aria-hidden="true">1</span>
+            <h3>Explore sem pressa</h3>
+            <p>Fotos claras, descricoes objetivas, filtros por conforto e mobilidade. Nao tem cronometro.</p>
+          </li>
+          <li class="passo">
+            <span class="passo-num" aria-hidden="true">2</span>
+            <h3>Tire suas duvidas</h3>
+            <p>Nossa consultora responde pelo WhatsApp com paciencia e sem julgamento. Pode perguntar qualquer coisa.</p>
+          </li>
+          <li class="passo">
+            <span class="passo-num" aria-hidden="true">3</span>
+            <h3>Receba em casa</h3>
+            <p>Caixa neutra, sem nome da loja, sem nenhuma indicacao do que tem dentro. A curiosidade da vizinha fica pra ela.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ DEPOIMENTO ============ -->
+      <section class="sec-quote" aria-labelledby="dep-titulo">
+        <blockquote>
+          <h2 id="dep-titulo">
+            &ldquo;Achei que esse assunto tinha prazo de validade.
+            Que bom que eu estava errada.&rdquo;
+          </h2>
+          <cite>— Dona Sonia, 68 anos · cliente Chama Viva desde 2024</cite>
+        </blockquote>
+      </section>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="rodape">
+      <p class="rodape-marca">Chama Viva 🔥</p>
+      <p class="rodape-frase">Bem-estar intimo para quem viveu o suficiente para saber o que quer.</p>
+      <p class="rodape-info">Privacidade garantida · Embalagem sigilosa · Atendimento humano</p>
+    </footer>
+
+  </body>
+</html>
