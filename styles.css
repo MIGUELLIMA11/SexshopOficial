@@ -67,6 +67,47 @@ img { display: block; max-width: 100%; }
 ul, ol { list-style: none; }
 
 /* =========================================================
+   REDUÇÃO DE MOVIMENTO
+   Automático via media query (para quem configurou no SO)
+   + classe manual via widget (para quem não sabe configurar)
+   Resolve vertigem, desorientação e ansiedade causadas por
+   animações — comuns em usuários 60+ e com vestibular
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+body.sem-movimento *,
+body.sem-movimento *::before,
+body.sem-movimento *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* =========================================================
+   BARRA DE PROGRESSO DE SCROLL
+   Responde a pergunta silenciosa "quanto falta para acabar"
+   — reduz a ansiedade de rolagem no público 60+
+========================================================= */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 5px;
+  background: var(--terra);
+  z-index: 9999;
+  transition: width 100ms linear;
+  border-radius: 0 3px 3px 0;
+}
+
+/* =========================================================
    ACESSIBILIDADE
 ========================================================= */
 .skip-link {
@@ -446,4 +487,275 @@ ul, ol { list-style: none; }
   .btn-nav        { display: none; }
   .selos          { flex-direction: column; gap: 6px; }
   .rodape         { padding: 40px 20px; }
+}
+
+/* =========================================================
+   WIDGET DE ACESSIBILIDADE — MENU RETRÁTIL
+   Botão toggle sempre visível; painel oculto por padrão.
+   Mantém a tela limpa para 60+ e revela as opções
+   somente quando necessário.
+========================================================= */
+.a11y-widget {
+  position: fixed;
+  bottom: 108px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+/* Botão toggle — sempre visível */
+.a11y-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: var(--r-pill);
+  border: 2px solid var(--borda);
+  background: var(--branco);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: .9rem;
+  cursor: pointer;
+  box-shadow: var(--s-md);
+  transition: background 180ms, border-color 180ms, color 180ms;
+}
+.a11y-toggle:hover { background: var(--terra-pale); }
+.a11y-toggle[aria-expanded="true"] {
+  background: var(--terra-pale);
+  border-color: var(--terra);
+  color: var(--terra-d);
+}
+.a11y-toggle-label { font-size: .9rem; }
+
+/* Painel com os botões — oculto por padrão */
+.a11y-painel {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  order: -1;
+}
+.a11y-painel.aberto {
+  display: flex;
+  animation: subir-painel 240ms cubic-bezier(.22, 1, .36, 1) both;
+}
+@keyframes subir-painel {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Botões individuais do painel */
+.a11y-btn {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid var(--borda);
+  background: var(--branco);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: var(--s-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 180ms, color 180ms, transform 180ms;
+  position: relative;
+}
+.a11y-btn:hover { background: var(--terra); color: #fff; transform: scale(1.08); }
+.a11y-btn[aria-pressed="true"] { background: var(--tinta); color: #fff; }
+
+/* tooltip lateral — só aparece em hover/foco, agora à esquerda */
+.a11y-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  right: calc(100% + 12px);
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--tinta);
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+.a11y-btn:hover::after,
+.a11y-btn:focus-visible::after { opacity: 1; }
+
+/* =========================================================
+   BOTÃO WHATSAPP FLUTUANTE
+   Sempre visível — WhatsApp é o canal que idosas conhecem
+========================================================= */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #25d366;
+  color: #fff;
+  border-radius: var(--r-pill);
+  padding: 0 24px 0 18px;
+  min-height: 60px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(37, 211, 102, .5);
+  transition: transform 180ms, box-shadow 180ms;
+}
+.whatsapp-fab:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(37, 211, 102, .65); }
+.whatsapp-fab svg { flex-shrink: 0; }
+
+@media (max-width: 540px) {
+  .whatsapp-fab span { display: none; }           /* só ícone no mobile pequeno */
+  .whatsapp-fab { padding: 0 18px; border-radius: 50%; width: 60px; min-height: 60px; }
+  .a11y-widget  { bottom: 100px; right: 12px; }
+  .a11y-btn     { width: 48px; height: 48px; }
+  .a11y-toggle  { height: 40px; padding: 0 14px; font-size: .82rem; }
+}
+
+/* =========================================================
+   MODO ALTO CONTRASTE
+   Ativado pelo widget — cores invertidas para quem tem
+   dificuldade visual severa
+========================================================= */
+body.alto-contraste {
+  --creme:      #000000;
+  --creme-alt:  #111111;
+  --tinta:      #ffffff;
+  --tinta-mid:  #dddddd;
+  --tinta-soft: #aaaaaa;
+  --borda:      rgba(255, 255, 255, .25);
+  --terra:      #ff9966;
+  --terra-d:    #ffbb99;
+  --terra-pale: #3a1a0a;
+  --branco:     #1a1a1a;
+}
+body.alto-contraste .topbar          { background: rgba(0, 0, 0, .97); }
+body.alto-contraste .destaque-card,
+body.alto-contraste .card            { background: #1a1a1a; border-color: #444; }
+body.alto-contraste .faixa           { background: #111; border-top: 1px solid #333; }
+body.alto-contraste .a11y-btn        { background: #1a1a1a; border-color: #555; color: #fff; }
+
+/* =========================================================
+   BOTÃO VOLTAR AO TOPO
+   Aparece no canto inferior esquerdo após 400px de scroll.
+   Idosas não sabem rolar para cima — acham que precisam
+   fechar e reabrir o site.
+========================================================= */
+.voltar-topo {
+  position: fixed;
+  bottom: 28px;
+  left: 24px;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--borda);
+  background: var(--branco);
+  color: var(--tinta);
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: var(--s-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity 260ms, transform 260ms, background 180ms;
+}
+.voltar-topo.visivel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.voltar-topo:hover { background: var(--terra); color: #fff; }
+
+/* tooltip à direita (lado livre) */
+.voltar-topo::after {
+  content: "Voltar ao início";
+  position: absolute;
+  left: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--tinta);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: .82rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms;
+}
+.voltar-topo:hover::after,
+.voltar-topo:focus-visible::after { opacity: 1; }
+
+@media (max-width: 540px) {
+  .voltar-topo { width: 46px; height: 46px; font-size: 1.1rem; left: 12px; bottom: 12px; }
+}
+
+/* =========================================================
+   LINKS VISITADOS
+   Feedback visual de "já vi isso" — remove a desorientação
+   de não saber o que já foi explorado na página.
+   Cor levemente mais apagada, sem perder contraste AA.
+========================================================= */
+a:visited:not(.btn):not(.brand):not(.skip-link):not(.whatsapp-fab) {
+  color: var(--tinta-soft);
+}
+.nav-list a:visited     { color: var(--tinta-soft); }
+.link-seta:visited      { color: var(--musgo); }
+
+/* =========================================================
+   DIÁLOGO DE CONFIRMAÇÃO (WHATSAPP)
+   Idosas se assustam quando o site "desaparece" e o
+   WhatsApp abre sem aviso. Este diálogo avisa antes de sair.
+========================================================= */
+.dialogo-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 26, 20, .65);
+  z-index: 500;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.dialogo-overlay.ativo { display: flex; }
+
+.dialogo {
+  background: var(--branco);
+  border-radius: var(--r-xl);
+  padding: 40px 36px;
+  max-width: 440px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--s-lg);
+  animation: entrar 280ms cubic-bezier(.22,1,.36,1) both;
+}
+.dialogo-icone  { font-size: 3rem; margin-bottom: 16px; }
+.dialogo h2     { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--tinta); margin-bottom: 12px; line-height: 1.3; }
+.dialogo p      { color: var(--tinta-mid); font-size: 1rem; line-height: 1.65; margin-bottom: 28px; }
+.dialogo-acoes  { display: flex; flex-direction: column; gap: 12px; }
+.dialogo-acoes .btn { width: 100%; min-height: 56px; font-size: 1.05rem; }
+
+@media (max-width: 480px) {
+  .dialogo { padding: 32px 24px; }
 }
