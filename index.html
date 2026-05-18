@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
 <!-- =========================================================
-     CHAMA VIVA — Sexshop para o publico 60+
+     AINDA DÁ — Sexshop para o publico 60+
      Atividade UX: Primeira dobra + justificativa de design
 
      FONTE  : Playfair Display (titulos) + Inter (corpo)
@@ -14,7 +14,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chama Viva | Intimidade sem prazo de validade</title>
+    <title>Ainda Dá | Intimidade sem prazo de validade</title>
     <meta
       name="description"
       content="Sexshop para quem tem 60+ e sabe o que quer. Produtos de bem-estar intimo com linguagem clara, entrega discreta e atendimento humanizado."
@@ -32,14 +32,27 @@
 
     <!-- ===================== HEADER ===================== -->
     <header class="topbar" role="banner">
-      <a class="brand" href="#" aria-label="Chama Viva — pagina inicial">Chama Viva 🔥</a>
+      <a class="brand" href="#" aria-label="Ainda Dá — pagina inicial">Ainda Dá ✨</a>
 
       <nav aria-label="Menu principal">
+        <!-- desktop: links visíveis -->
         <ul class="nav-list">
-          <li><a href="#por-que">Por que nos</a></li>
-          <li><a href="#colecoes">Colecoes</a></li>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#colecoes">Coleções</a></li>
           <li><a href="#como-funciona">Como funciona</a></li>
         </ul>
+        <!-- mobile: hamburguer nativo (sem JS) -->
+        <details class="nav-mobile">
+          <summary class="nav-mobile-toggle" aria-label="Abrir menu de navegação">
+            <span aria-hidden="true">☰</span>
+            <span>Menu</span>
+          </summary>
+          <ul class="nav-mobile-list">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#colecoes">Coleções</a></li>
+            <li><a href="#como-funciona">Como funciona</a></li>
+          </ul>
+        </details>
       </nav>
 
       <a class="btn btn-nav" href="#atendimento">
@@ -51,7 +64,7 @@
     <main id="conteudo">
 
       <!-- ============ PRIMEIRA DOBRA (hero) ============ -->
-      <section class="hero" aria-labelledby="hero-titulo">
+      <section class="hero" id="inicio" aria-labelledby="hero-titulo">
 
         <!-- coluna esquerda: copy -->
         <div class="hero-copy">
@@ -68,7 +81,7 @@
 
           <p class="hero-sub">
             Intimidade nao tem data de validade — mas alguns sites parecem achar que sim.
-            A Chama Viva existe pra provar o contrario: com letras grandes, linguagem sem
+            A Ainda Dá existe pra provar o contrario: com letras grandes, linguagem sem
             enrolacao e uma consultora de verdade do outro lado.
             <strong>Sem tabus. Sem julgamento. Sem letra miuda.</strong>
           </p>
@@ -83,8 +96,8 @@
               <span>Consultoria por WhatsApp com pessoa real, sem chatbot</span>
             </li>
             <li>
-              <span class="dif-icon" aria-hidden="true">🔤</span>
-              <span>Fonte grande, botoes grandes, navegacao simples</span>
+              <span class="dif-icon" aria-hidden="true">Aa</span>
+              <span>Site que você consegue usar de verdade, sem pedir ajuda pra ninguém</span>
             </li>
           </ul>
 
@@ -102,14 +115,13 @@
 
         <!-- coluna direita: card produto destaque -->
         <aside class="destaque-card" aria-label="Produto em destaque">
-          <p class="destaque-label">⭐ Escolha da semana</p>
-
-          <div class="produto-emoji" aria-hidden="true">🌹</div>
+          <p class="destaque-label">Escolha da semana</p>
 
           <h2 class="produto-nome">Kit Primeiros Passos 60+</h2>
           <p class="produto-desc">
-            Gel hipoalergenico + item ergonomico + guia ilustrado com letra grande.
-            Selecionados por especialistas para conforto e facilidade de uso.
+            Um gel suave pra pele sensível, um item pensado pra quem tem artrite ou prefere algo mais leve
+            — e um guia com letra que dá pra ler sem forçar a vista.
+            Escolhidos a dedo. Não por algoritmo.
           </p>
 
           <div class="avaliacao" role="img" aria-label="4.9 de 5 estrelas — 247 avaliacoes de clientes 60+">
@@ -137,13 +149,12 @@
       </div>
 
       <!-- ============ POR QUE NOS ============ -->
-      <section class="sec" id="por-que" aria-labelledby="pq-titulo">
+      <section class="sec" id="colecoes" aria-labelledby="pq-titulo">
         <header class="sec-head">
-          <p class="label">O que nos diferencia</p>
+          <p class="label">Por que a Ainda Dá</p>
           <h2 id="pq-titulo">Feito para quem sabe o que quer</h2>
           <p class="sec-sub">
-            60 anos de vida dao muita sabedoria. Mas ainda da pra aprender coisa nova —
-            principalmente a como se cuidar melhor.
+            Você já sabe o que quer. A gente só torna mais fácil chegar lá.
           </p>
         </header>
 
@@ -175,23 +186,23 @@
       <section class="sec sec-alt" id="como-funciona" aria-labelledby="cf-titulo">
         <header class="sec-head">
           <p class="label">Simples do inicio ao fim</p>
-          <h2 id="cf-titulo">Tres passos. Sem mistério.</h2>
+          <h2 id="cf-titulo" tabindex="0">Funciona assim — simples mesmo.</h2>
         </header>
 
         <ol class="passos" aria-label="Como comprar">
           <li class="passo">
             <span class="passo-num" aria-hidden="true">1</span>
-            <h3>Explore sem pressa</h3>
-            <p>Fotos claras, descricoes objetivas, filtros por conforto e mobilidade. Nao tem cronometro.</p>
+            <h3 tabindex="0">Explore sem pressa</h3>
+            <p>Navegue no seu ritmo. Cada produto tem descrição em português direto, sem nome técnico esquisito. Não tem cronometro, não tem pop-up, não tem pressa.</p>
           </li>
           <li class="passo">
             <span class="passo-num" aria-hidden="true">2</span>
-            <h3>Tire suas duvidas</h3>
-            <p>Nossa consultora responde pelo WhatsApp com paciencia e sem julgamento. Pode perguntar qualquer coisa.</p>
+            <h3 tabindex="0">Tire suas duvidas</h3>
+            <p>Ficou com dúvida? Manda mensagem. A consultora responde no WhatsApp — sem script, sem julgamento. Pergunta o que quiser.</p>
           </li>
           <li class="passo">
             <span class="passo-num" aria-hidden="true">3</span>
-            <h3>Receba em casa</h3>
+            <h3 tabindex="0">Receba em casa</h3>
             <p>Caixa neutra, sem nome da loja, sem nenhuma indicacao do que tem dentro. A curiosidade da vizinha fica pra ela.</p>
           </li>
         </ol>
@@ -200,20 +211,20 @@
       <!-- ============ DEPOIMENTO ============ -->
       <section class="sec-quote" aria-labelledby="dep-titulo">
         <blockquote>
-          <h2 id="dep-titulo">
+          <h2 id="dep-titulo" tabindex="0">
             &ldquo;Achei que esse assunto tinha prazo de validade.
             Que bom que eu estava errada.&rdquo;
           </h2>
-          <cite>— Dona Sonia, 68 anos · cliente Chama Viva desde 2024</cite>
+          <cite>— Dona Sonia, 68 anos · cliente Ainda Dá desde 2024</cite>
         </blockquote>
       </section>
 
     </main>
 
     <!-- ===================== FOOTER ===================== -->
-    <footer class="rodape">
-      <p class="rodape-marca">Chama Viva 🔥</p>
-      <p class="rodape-frase">Bem-estar intimo para quem viveu o suficiente para saber o que quer.</p>
+    <footer class="rodape" tabindex="0">
+      <p class="rodape-marca">Ainda Dá ✨</p>
+      <p class="rodape-frase">Para quem viveu o suficiente pra saber que prazer não tem data de validade.</p>
       <p class="rodape-info">Privacidade garantida · Embalagem sigilosa · Atendimento humano</p>
     </footer>
 
@@ -265,7 +276,6 @@
     <div class="dialogo-overlay" id="dialogo-whatsapp" role="dialog"
          aria-modal="true" aria-labelledby="dialogo-titulo">
       <div class="dialogo">
-        <div class="dialogo-icone" aria-hidden="true">💬</div>
         <h2 id="dialogo-titulo">Você vai abrir o WhatsApp agora</h2>
         <p>
           O site vai continuar aberto — é só voltar a ele quando quiser.
@@ -314,6 +324,16 @@
         var html = document.documentElement;
         var tamanho = 18;
         var MIN = 16, MAX = 28, PASSO = 2;
+
+        /* --- Fecha menu mobile ao clicar em um link --- */
+        var navMobile = document.querySelector('.nav-mobile');
+        if (navMobile) {
+          navMobile.querySelectorAll('.nav-mobile-list a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              navMobile.removeAttribute('open');
+            });
+          });
+        }
 
         /* --- Toggle do painel de ajuda --- */
         var toggle = document.getElementById('btn-ajuda-toggle');

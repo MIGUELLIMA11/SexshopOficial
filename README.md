@@ -1,4 +1,4 @@
-# 🔥 Chama Viva
+# ✨ Ainda Dá
 
 > **Atividade de UX | Faculdade**  
 > Primeira dobra (first fold) de um site para o tema: **Sexshop para Idosos (60+)**
@@ -7,7 +7,7 @@
 
 ## 📋 Sobre o Projeto
 
-O **Chama Viva** é um protótipo de landing page desenvolvido como atividade prática da disciplina de UX. O desafio era criar a **primeira dobra** de um site para um dos temas propostos, justificando as decisões de design com base em persona, acessibilidade e boas práticas de UX.
+O **Ainda Dá** é um protótipo de landing page desenvolvido como atividade prática da disciplina de UX. O desafio era criar a **primeira dobra** de um site para um dos temas propostos, justificando as decisões de design com base em persona, acessibilidade e boas práticas de UX.
 
 **Tema escolhido:** Sexshop para o público 60+  
 **Abordagem:** Quebrar o tabu com humor respeitoso, linguagem clara e design totalmente acessível para a terceira idade.
@@ -59,10 +59,14 @@ Botão fixo no canto inferior direito, sempre visível. Ao clicar em **"⚙ Ajud
 | **A−** | Diminui a fonte (mín. 16px) | Permite reverter caso o tamanho fique grande demais |
 | **◐** | Ativa modo alto contraste (fundo escuro, letras brancas) | Para quem tem sensibilidade à luz ou dificuldade visual severa |
 | **✋** | Para todas as animações da página | Vertigem e desorientação causadas por movimento são comuns nesta faixa etária |
+| **🔊** | Lê o conteúdo da página em voz alta (Web Speech API, pt-BR) | Para quem tem visão muito reduzida ou simplesmente prefere ouvir; para imediatamente ao clicar de novo |
 
 O painel fecha com **ESC** ou ao clicar no mesmo botão. Ao abrir, o foco vai direto para o `A+` — sem precisar navegar com Tab.
 
 O widget foi posicionado à **direita**, acima do botão de WhatsApp, para não cobrir nenhum conteúdo da página.
+
+#### ↑ Botão Voltar ao Topo
+Fixo no canto inferior **esquerdo**, aparece após 400px de scroll. Idosas não sabem rolar de volta ao início — muitas fecham e reabrem o site. O botão some automaticamente quando já estão no topo.
 
 #### 📊 Barra de Progresso de Scroll
 Faixa fina em terracota no topo da tela que avança conforme a usuária rola a página. Remove a ansiedade silenciosa de *"quanto falta para acabar?"* — muitas idosas param de explorar por não saber se o conteúdo vai continuar.
@@ -137,9 +141,10 @@ Esta é a camada mais negligenciada — e a mais crítica para o público femini
 ```
 ┌─────────────────────────────────────┐
 │  HEADER — topbar sticky             │
-│  Logo | Nav | Botão Consultora      │
+│  Logo | Início · Coleções ·         │
+│         Como funciona | Consultora  │
 ├─────────────────────────────────────┤
-│  HERO — primeira dobra              │
+│  HERO (#inicio) — primeira dobra    │
 │  ┌────────────────┬───────────────┐ │
 │  │  copy          │  card produto │ │
 │  │  pill badge    │  destaque     │ │
@@ -150,9 +155,9 @@ Esta é a camada mais negligenciada — e a mais crítica para o público femini
 ├─────────────────────────────────────┤
 │  FAIXA — garantias (trust strip)    │
 ├─────────────────────────────────────┤
-│  COLEÇÕES — 3 cards                 │
+│  COLEÇÕES (#colecoes) — 3 cards     │
 ├─────────────────────────────────────┤
-│  COMO FUNCIONA — 3 passos           │
+│  COMO FUNCIONA (#como-funciona)     │
 ├─────────────────────────────────────┤
 │  DEPOIMENTO — citação destaque      │
 ├─────────────────────────────────────┤
@@ -160,6 +165,7 @@ Esta é a camada mais negligenciada — e a mais crítica para o público femini
 └─────────────────────────────────────┘
 
   [barra de progresso — topo, fixed]  
+  [↑ Voltar ao topo — canto inf. esq] 
   [⚙ Ajuda — canto inferior direito]  
   [💬 WhatsApp — canto inferior direito]
 ```
@@ -190,7 +196,7 @@ code .
 - Medo de ser julgada ao comprar
 - Dificuldade com navegações complexas
 
-**O que a Chama Viva resolve:**
+**O que a Ainda Dá resolve:**
 - Letra grande, linguagem clara e sem siglas
 - Embalagem discreta e entrega sigilosa (mencionado 3x na hero)
 - Consultora humana por WhatsApp
